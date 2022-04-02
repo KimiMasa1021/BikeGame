@@ -125,6 +125,11 @@ public class BikeContller : MonoBehaviour
         displayCoin.text = "コイン数：" + coin;
     }
 
+    public void  RmConstraint()
+    {
+        rg.constraints = RigidbodyConstraints.None;
+    }
+
 
 
     //  左右の動き  ///////////////////////////////////////
@@ -141,8 +146,7 @@ public class BikeContller : MonoBehaviour
     {
         angleLFlg = false;
         angleRFlg = false;
-
-        rg.angularVelocity = Vector3.zero;
+        rg.constraints = RigidbodyConstraints.FreezePositionX;
     }
     //衝突検知　音声///////////////////////////////////////
     public string freeOJ = "";
@@ -198,7 +202,7 @@ public class BikeContller : MonoBehaviour
         if (this.transform.rotation == null) return;
         slidingFlg = true;
         if (!slidingEfect.isEmitting) slidingEfect.Play();
-        this.transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, -35, 67), 100f);
+        this.transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, -35, 50), 100f);
         await Task.Delay(1000);
         this.transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0), 100f);
         if (slidingEfect.isEmitting) slidingEfect.Stop();

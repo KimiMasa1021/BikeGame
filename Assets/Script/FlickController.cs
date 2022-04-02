@@ -81,17 +81,24 @@ public class FlickController : MonoBehaviour
         {
             case "right":
                 if (BikeContller.instance.freeOJ != "right")
+                {
+                    BikeContller.instance.RmConstraint(); 
                     BikeContller.instance.RightMove();
+                }
+                BikeContller.instance.RightMove();
                 return;
             case "left":
                 if (BikeContller.instance.freeOJ != "left")
+                {
+                    BikeContller.instance.RmConstraint();
                     BikeContller.instance.LeftMove();
+                }
                 return;
             case "up":
                 BikeContller.instance.Jump();
                 return;
             case "down":
-                if (!BikeContller.instance.angleRFlg && !BikeContller.instance.angleLFlg)
+                if (!BikeContller.instance.angleLFlg && !BikeContller.instance.angleRFlg)
                 {
                     IKtest.instance.LFootChange();
                     BikeContller.instance.slidingIvent();

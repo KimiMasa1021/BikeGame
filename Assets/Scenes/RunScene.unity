@@ -382,7 +382,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 64
   m_CollisionDetection: 0
 --- !u!4 &225731873
 Transform:
@@ -538,7 +538,7 @@ MonoBehaviour:
     steering: 0
   - Wheel: {fileID: 1694728788}
     steering: 1
-  maxMotorTorque: 300
+  maxMotorTorque: 600
   maxSteeringAngle: 20
   bodyAngleLimit: 0.2
   speedLimit: 25
@@ -8233,8 +8233,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.7133503, y: 6.603083, z: 1.0579423}
-  m_Center: {x: -1.7101761, y: 1.2215304, z: 0.032574724}
+  m_Size: {x: 6.4863067, y: 6.603083, z: 1.0579423}
+  m_Center: {x: -2.0803714, y: 1.2215295, z: 0.032574724}
 --- !u!23 &3986314108916553862
 MeshRenderer:
   m_ObjectHideFlags: 0

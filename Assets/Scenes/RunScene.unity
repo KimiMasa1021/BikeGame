@@ -356,11 +356,11 @@ GameObject:
   m_Component:
   - component: {fileID: 225731873}
   - component: {fileID: 225731872}
-  - component: {fileID: 225731875}
   - component: {fileID: 225731876}
   - component: {fileID: 225731874}
   - component: {fileID: 225731877}
   - component: {fileID: 225731878}
+  - component: {fileID: 225731879}
   m_Layer: 0
   m_Name: BikeModel
   m_TagString: Untagged
@@ -430,19 +430,6 @@ MonoBehaviour:
   - {fileID: 8080152764971925845, guid: 42e267b030443cb4b8ea73dd4d275d9b, type: 3}
   startTipIndex: 1
   preInstantiate: 3
---- !u!114 &225731875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 225731871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0350a2157585abe4baf0200f8261ecc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upForce: 9000
 --- !u!82 &225731876
 AudioSource:
   m_ObjectHideFlags: 0
@@ -559,7 +546,8 @@ MonoBehaviour:
   maxMotorTorque: 300
   maxSteeringAngle: 20
   bodyAngleLimit: 0.2
-  speedLimit: 14
+  speedLimit: 18
+  upForce: 10000
   displaySpeed: {fileID: 528494989}
   displayCoin: {fileID: 1020952001}
   handle: {fileID: 1823861949}
@@ -594,6 +582,20 @@ MonoBehaviour:
   - {fileID: 1829765773}
   - {fileID: 1925822522}
   - {fileID: 1380818527}
+--- !u!114 &225731879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225731871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a669201c8e752024c934d390657999fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Direction: 
+  flic: {fileID: 559309740}
 --- !u!1 &233065942
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,6 +907,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528494987}
+  m_CullTransparentMesh: 1
+--- !u!1 &559309738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 559309739}
+  - component: {fileID: 559309741}
+  - component: {fileID: 559309740}
+  m_Layer: 5
+  m_Name: Flick
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &559309739
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559309738}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1069672804}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 130, y: -250}
+  m_SizeDelta: {x: 200, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &559309740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559309738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 40
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\u65B9\u5411"
+--- !u!222 &559309741
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559309738}
   m_CullTransparentMesh: 1
 --- !u!1 &621318204
 GameObject:
@@ -1581,6 +1662,7 @@ RectTransform:
   - {fileID: 1020952000}
   - {fileID: 1776876589}
   - {fileID: 1380818528}
+  - {fileID: 559309739}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1813,7 +1895,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 225731875}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Jump, Assembly-CSharp
         m_MethodName: ButtonJump
         m_Mode: 1

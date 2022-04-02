@@ -12,6 +12,7 @@ public class BikeContller : MonoBehaviour
     public float maxSteeringAngle;
     public float bodyAngleLimit;
     public float speedLimit;
+    public float upForce;
     public Text displaySpeed;
     public Text displayCoin;
     public Transform handle;
@@ -68,9 +69,6 @@ public class BikeContller : MonoBehaviour
         if (gameFlg)
         {
 
-
-            Vector3 force = new Vector3(0.0f, 0.0f, maxMotorTorque);
-
             if (!slidingFlg)
             {
                 //キーが押されてない場合車体をまっすぐに
@@ -97,6 +95,7 @@ public class BikeContller : MonoBehaviour
                     ModelAngle = maxSteeringAngle * -1;
             }
             //一定の速度まで力を加える
+            Vector3 force = new Vector3(0.0f, 0.0f, maxMotorTorque);
             if (rg.velocity.magnitude < speedLimit)
                 rg.AddForce(force);
             //タイヤの個数分ループしてる
@@ -123,7 +122,25 @@ public class BikeContller : MonoBehaviour
         displayCoin.text = "コイン数：" + coin;
     }
 
-    private async void OnTriggerEnter(Collider other)
+
+
+    //  左右の動き  ///////////////////////////////////////
+    public async void RightMove()
+    {
+        angleRFlg = true;
+        await Task.Delay(500);
+        angleRFlg = false;
+    }
+    public async void LeftMove()
+    {
+        angleLFlg = true;
+        await Task.Delay(500);
+        angleLFlg = false;
+    }
+    //////////////////////////////////////////////////////
+
+    //衝突検知　音声///////////////////////////////////////
+    private void OnTriggerEnter(Collider other)
     {
         //コインの衝突
         if (other.gameObject.CompareTag("coin"))
@@ -143,26 +160,9 @@ public class BikeContller : MonoBehaviour
             this.transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, -100, 90), 100f);
         }
     }
+    //////////////////////////////////////////////////////////
 
-    public void RPushDown()
-    {
-        angleRFlg = true;
-    }
-    public void RPushUp()
-    {
-        angleRFlg = false;
-    }
-    public void LPushDown()
-    {
-        angleLFlg = true;
-    }
-    public void LPushUp()
-    {
-        angleLFlg = false;
-    }
-
-
-    //スライディング機能　カッコ非同期処理
+    //スライディング機能///////////////////////////////////////
     public async void slidingIvent()
     {
         if (this.transform.rotation == null) return;
@@ -173,8 +173,16 @@ public class BikeContller : MonoBehaviour
         this.transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0), 100f);
         if (slidingEfect.isEmitting) slidingEfect.Stop();
         slidingFlg = false;
-
     }
+    //////////////////////////////////////////////////////////
+
+    //ジャンプ機能/////////////////////////////////////////////
+    public void Jump()
+    {
+        rg.AddForce(new Vector3(0, upForce, 0)); //上に向かって力を加える
+    }
+    //////////////////////////////////////////////////////////
+
     //ホイールパラメータのクラス
     [System.Serializable]
     public class AxleInfo
@@ -185,7 +193,8 @@ public class BikeContller : MonoBehaviour
     }
 
     //ホーム画面に戻る
-        public void GameOverToHome(){
-                SceneManager.LoadScene("StartScene");
+    public void GameOverToHome()
+    {
+        SceneManager.LoadScene("StartScene");
     }
 }

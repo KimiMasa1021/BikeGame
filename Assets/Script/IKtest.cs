@@ -15,13 +15,15 @@ public class IKtest : MonoBehaviour
     private Transform _leftfootIkTarget;
     [SerializeField]
     private Transform _rightfootIkTarget;
-
     public bool LFootFlg;
+    static public IKtest instance;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         LFootFlg = true;
+        if(instance==null)
+            instance = this;
     }
 
     private void OnAnimatorIK()
@@ -59,16 +61,16 @@ public class IKtest : MonoBehaviour
         LFootFlg = false;
         animator.SetBool("Sliding", true);
         await Task.Delay(1000);
-        LFootReturn();
-
+        LFootFlg = true;
+        animator.SetBool("Sliding", false);
 
     }
 
-    public void LFootReturn()
+    /*public void LFootReturn()
     {
         LFootFlg = true;
         animator.SetBool("Sliding", false);
-    }
+    }*/
 }
 
 

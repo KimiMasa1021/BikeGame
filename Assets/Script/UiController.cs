@@ -15,12 +15,11 @@ public class UiController : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(BikeContller.instance.gameFlg);
 
         if (BikeContller.instance.gameFlg)
         {
-            for (int i = 0; i < ActiveUI.Length; i++)
-                ActiveUI[i].SetActive(true);
+            /*for (int i = 0; i < ActiveUI.Length; i++)
+                ActiveUI[i].SetActive(true);*/
 
             for (int i = 0; i < StopUI.Length; i++)
                 StopUI[i].SetActive(false);
@@ -31,8 +30,8 @@ public class UiController : MonoBehaviour
             for (int i = 0; i < StopUI.Length; i++)
                 StopUI[i].SetActive(true);
 
-            for (int i = 0; i < ActiveUI.Length; i++)
-                ActiveUI[i].SetActive(false);
+           /* for (int i = 0; i < ActiveUI.Length; i++)
+                ActiveUI[i].SetActive(false);*/
 
         }
 

@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Threading;
 
 public class BikeContller : MonoBehaviour
 {
@@ -27,12 +28,13 @@ public class BikeContller : MonoBehaviour
     public bool gameFlg;
     Rigidbody rg;
     float ModelAngle;
-    bool angleRFlg;
-    bool angleLFlg;
+    public bool angleRFlg;
+    public bool angleLFlg;
     bool keySteerR;
     bool keySteerL;
     int coin;
-    bool slidingFlg;
+    public bool slidingFlg;
+    Vector3 position;
 
     void Start()
     {
@@ -66,6 +68,7 @@ public class BikeContller : MonoBehaviour
     {
         rg = this.GetComponent<Rigidbody>();
         Quaternion BikeModel = this.transform.rotation;
+        position = this.transform.position;
         if (gameFlg)
         {
 
@@ -125,23 +128,50 @@ public class BikeContller : MonoBehaviour
 
 
     //  左右の動き  ///////////////////////////////////////
-    public async void RightMove()
+    public void RightMove()
     {
         angleRFlg = true;
-        await Task.Delay(500);
-        angleRFlg = false;
     }
-    public async void LeftMove()
+    public void LeftMove()
     {
         angleLFlg = true;
-        await Task.Delay(500);
-        angleLFlg = false;
     }
     //////////////////////////////////////////////////////
+    void AllFalse()
+    {
+        angleLFlg = false;
+        angleRFlg = false;
 
+        rg.angularVelocity = Vector3.zero;
+    }
     //衝突検知　音声///////////////////////////////////////
+    public string freeOJ = "";
     private void OnTriggerEnter(Collider other)
     {
+
+        //コース誘導のオブジェクト接触判定
+        if (other.gameObject.CompareTag("CouseBar"))
+        {
+            if (freeOJ != "right")
+                AllFalse();
+            freeOJ = "right";
+        }
+        if (other.gameObject.CompareTag("CouseBar1"))
+        {
+            if (freeOJ != "center")
+                AllFalse();
+            freeOJ = "center";
+        }
+        if (other.gameObject.CompareTag("CouseBar2"))
+        {
+            if (freeOJ != "left")
+                AllFalse();
+            freeOJ = "left";
+        }
+        if (other.gameObject.CompareTag("Reset"))
+        {
+            freeOJ = "reset";
+        }
         //コインの衝突
         if (other.gameObject.CompareTag("coin"))
         {
@@ -168,7 +198,7 @@ public class BikeContller : MonoBehaviour
         if (this.transform.rotation == null) return;
         slidingFlg = true;
         if (!slidingEfect.isEmitting) slidingEfect.Play();
-        this.transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, -30, 60), 100f);
+        this.transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, -35, 67), 100f);
         await Task.Delay(1000);
         this.transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0), 100f);
         if (slidingEfect.isEmitting) slidingEfect.Stop();

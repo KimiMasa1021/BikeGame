@@ -149,7 +149,7 @@ public class BikeContller : MonoBehaviour
         rg.constraints = RigidbodyConstraints.FreezePositionX;
     }
     //衝突検知　音声///////////////////////////////////////
-    public string freeOJ = "";
+    public string freeOJ = "reset";
     private void OnTriggerEnter(Collider other)
     {
 

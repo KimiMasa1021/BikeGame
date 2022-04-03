@@ -51,22 +51,22 @@ public class FlickController : MonoBehaviour
 
         if (Mathf.Abs(directionY) < Mathf.Abs(directionX))
         {
-            if (1 < directionX)
+            if (30 < directionX)
             {
                 Direction = "right";
             }
-            else if (-1 > directionX)
+            else if (-30 > directionX)
             {
                 Direction = "left";
             }
         }
         else if (Mathf.Abs(directionX) < Mathf.Abs(directionY))
         {
-            if (1 < directionY)
+            if (30 < directionY)
             {
                 Direction = "up";
             }
-            else if (-1 > directionY)
+            else if (-30 > directionY)
             {
                 Direction = "down";
             }
@@ -82,10 +82,9 @@ public class FlickController : MonoBehaviour
             case "right":
                 if (BikeContller.instance.freeOJ != "right")
                 {
-                    BikeContller.instance.RmConstraint(); 
+                    BikeContller.instance.RmConstraint();
                     BikeContller.instance.RightMove();
                 }
-                BikeContller.instance.RightMove();
                 return;
             case "left":
                 if (BikeContller.instance.freeOJ != "left")

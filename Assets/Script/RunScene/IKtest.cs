@@ -60,7 +60,7 @@ public class IKtest : MonoBehaviour
     {
         LFootFlg = false;
         animator.SetBool("Sliding", true);
-        await Task.Delay(1000);
+        await Task.Delay(600);
         LFootFlg = true;
         animator.SetBool("Sliding", false);
 

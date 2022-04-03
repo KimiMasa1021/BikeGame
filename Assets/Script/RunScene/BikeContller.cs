@@ -203,7 +203,7 @@ public class BikeContller : MonoBehaviour
         slidingFlg = true;
         if (!slidingEfect.isEmitting) slidingEfect.Play();
         this.transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, -35, 50), 100f);
-        await Task.Delay(1000);
+        await Task.Delay(600);
         this.transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, 0), 100f);
         if (slidingEfect.isEmitting) slidingEfect.Stop();
         slidingFlg = false;

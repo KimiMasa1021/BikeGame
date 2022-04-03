@@ -43,12 +43,13 @@ public class MapController : MonoBehaviour
     }
     GameObject RundomMapGene(int tipIndex)
     {
-        int nextStageTip = Random.Range(0, stageTips.Length);
+        int nextStageTip = Random.Range(0, stageTips.Length -1);
 
         GameObject stageObject = (GameObject)Instantiate(
             stageTips[nextStageTip],
             new Vector3(0, 0, tipIndex * StageTipSize),
             Quaternion.identity);
+
         return stageObject;
     }
 

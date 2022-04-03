@@ -8,8 +8,11 @@ TagManager:
   - Obstacle
   - coin
   - policeBar
-  - GameClea
-  - Gameclea
+  - CouseBar
+  - CouseBar1
+  - CouseBar2
+  - CourseBar2
+  - Reset
   layers:
   - Default
   - TransparentFX

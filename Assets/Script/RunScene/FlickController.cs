@@ -37,7 +37,7 @@ public class FlickController : MonoBehaviour
             touchEndPos = new Vector3(
                 Input.mousePosition.x,
                 Input.mousePosition.y,
-                Input.mousePosition.y
+                Input.mousePosition.z
             );
 
             GetDirection();

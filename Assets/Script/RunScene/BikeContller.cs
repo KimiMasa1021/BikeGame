@@ -135,11 +135,30 @@ public class BikeContller : MonoBehaviour
     //  左右の動き  ///////////////////////////////////////
     public void RightMove()
     {
-        angleRFlg = true;
+        if(HeightChecker())
+        {
+            angleRFlg = true;
+        }
+        else
+        {
+            rg.constraints = RigidbodyConstraints.None;
+            angleRFlg = true;
+            rg.AddForce(new Vector3(50000, 0,0));
+        }
     }
     public void LeftMove()
     {
-        angleLFlg = true;
+
+        if(HeightChecker())
+        {
+            angleLFlg = true;
+        }
+        else
+        {
+            rg.constraints = RigidbodyConstraints.None;
+            angleLFlg = true;
+            rg.AddForce(new Vector3(-50000, 0,0));
+        }
     }
     //////////////////////////////////////////////////////
     void AllFalse()
@@ -213,9 +232,18 @@ public class BikeContller : MonoBehaviour
     //ジャンプ機能/////////////////////////////////////////////
     public void Jump()
     {
-        rg.AddForce(new Vector3(0, upForce, 0)); //上に向かって力を加える
+        if(HeightChecker())
+        {
+            rg.AddForce(new Vector3(0, upForce,0)); //上に向かって力を加える
+        }
     }
     //////////////////////////////////////////////////////////
+    public bool HeightChecker()
+    {
+        if(rg.position.y <= -22.5)
+            return true;
+        else return false; 
+    }
 
     //ホイールパラメータのクラス
     [System.Serializable]

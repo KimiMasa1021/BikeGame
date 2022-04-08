@@ -143,7 +143,7 @@ public class BikeContller : MonoBehaviour
         {
             rg.constraints = RigidbodyConstraints.None;
             angleRFlg = true;
-            rg.AddForce(new Vector3(50000, 0,0));
+            rg.AddForce(new Vector3(20000, 0,0));
         }
     }
     public void LeftMove()
@@ -157,7 +157,7 @@ public class BikeContller : MonoBehaviour
         {
             rg.constraints = RigidbodyConstraints.None;
             angleLFlg = true;
-            rg.AddForce(new Vector3(-50000, 0,0));
+            rg.AddForce(new Vector3(-20000, 0,0));
         }
     }
     //////////////////////////////////////////////////////

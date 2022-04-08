@@ -138,6 +138,7 @@ public class BikeContller : MonoBehaviour
         if(HeightChecker())
         {
             angleRFlg = true;
+            rg.constraints = RigidbodyConstraints.FreezeRotationZ;
         }
         else
         {
@@ -156,6 +157,7 @@ public class BikeContller : MonoBehaviour
         if(HeightChecker())
         {
             angleLFlg = true;
+            rg.constraints = RigidbodyConstraints.FreezeRotationZ;
         }
         else
         {
@@ -173,6 +175,7 @@ public class BikeContller : MonoBehaviour
     {
         angleLFlg = false;
         angleRFlg = false;
+        rg.constraints = RigidbodyConstraints.None;
         rg.constraints = RigidbodyConstraints.FreezePositionX;
     }
     //衝突検知　音声///////////////////////////////////////

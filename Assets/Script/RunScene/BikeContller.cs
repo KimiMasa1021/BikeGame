@@ -141,9 +141,13 @@ public class BikeContller : MonoBehaviour
         }
         else
         {
-            rg.constraints = RigidbodyConstraints.None;
-            angleRFlg = true;
-            rg.AddForce(new Vector3(20000, 0,0));
+            if(GageController.instance.slider.value > 0)
+            {
+                rg.constraints = RigidbodyConstraints.None;
+                angleRFlg = true;
+                rg.AddForce(new Vector3(20000, 0,0));
+                GageController.instance.DownFitness();
+            }
         }
     }
     public void LeftMove()
@@ -155,9 +159,13 @@ public class BikeContller : MonoBehaviour
         }
         else
         {
-            rg.constraints = RigidbodyConstraints.None;
-            angleLFlg = true;
-            rg.AddForce(new Vector3(-20000, 0,0));
+            if(GageController.instance.slider.value > 0)
+            {
+                rg.constraints = RigidbodyConstraints.None;
+                angleLFlg = true;
+                rg.AddForce(new Vector3(-20000, 0,0));
+                GageController.instance.DownFitness();
+            }
         }
     }
     //////////////////////////////////////////////////////

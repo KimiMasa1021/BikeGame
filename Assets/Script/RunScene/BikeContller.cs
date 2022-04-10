@@ -83,11 +83,11 @@ public class BikeContller : MonoBehaviour
                 //車体の角度の限界制御 Y軸
                 if (BikeModel.y > bodyAngleLimit)
                 {
-                    this.transform.rotation = new Quaternion(BikeModel.x, bodyAngleLimit, BikeModel.z, BikeModel.w);
+                    this.transform.rotation = new Quaternion(BikeModel.x, bodyAngleLimit, 0, BikeModel.w);
                 }
 
                 if (BikeModel.y < bodyAngleLimit * -1)
-                    this.transform.rotation = new Quaternion(BikeModel.x, bodyAngleLimit * -1, BikeModel.z, BikeModel.w);
+                    this.transform.rotation = new Quaternion(BikeModel.x, bodyAngleLimit * -1, 0, BikeModel.w);
                 //クランクの回転
                 clanck.transform.Rotate(new Vector3(1, 0, 0), 10);
                 //右折
@@ -138,7 +138,6 @@ public class BikeContller : MonoBehaviour
         if(HeightChecker())
         {
             angleRFlg = true;
-            rg.constraints = RigidbodyConstraints.FreezeRotationZ;
         }
         else
         {
@@ -146,7 +145,7 @@ public class BikeContller : MonoBehaviour
             {
                 rg.constraints = RigidbodyConstraints.None;
                 angleRFlg = true;
-                rg.AddForce(new Vector3(20000, 0,0));
+                rg.AddForce(new Vector3(40000, 0,0));
                 GageController.instance.DownFitness();
             }
         }
@@ -157,7 +156,6 @@ public class BikeContller : MonoBehaviour
         if(HeightChecker())
         {
             angleLFlg = true;
-            rg.constraints = RigidbodyConstraints.FreezeRotationZ;
         }
         else
         {
@@ -165,7 +163,7 @@ public class BikeContller : MonoBehaviour
             {
                 rg.constraints = RigidbodyConstraints.None;
                 angleLFlg = true;
-                rg.AddForce(new Vector3(-20000, 0,0));
+                rg.AddForce(new Vector3(-40000, 0,0));
                 GageController.instance.DownFitness();
             }
         }
@@ -175,7 +173,6 @@ public class BikeContller : MonoBehaviour
     {
         angleLFlg = false;
         angleRFlg = false;
-        rg.constraints = RigidbodyConstraints.None;
         rg.constraints = RigidbodyConstraints.FreezePositionX;
     }
     //衝突検知　音声///////////////////////////////////////

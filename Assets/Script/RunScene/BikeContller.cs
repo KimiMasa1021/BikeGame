@@ -138,7 +138,7 @@ public class BikeContller : MonoBehaviour
         if (HeightChecker())
         {
             angleRFlg = true;
-            rg.AddForce(new Vector3(40000, 0, 0));
+            rg.AddForce(new Vector3(15000, 0, 0));
             rg.constraints = RigidbodyConstraints.FreezeRotationZ;
 
         }
@@ -159,7 +159,7 @@ public class BikeContller : MonoBehaviour
         if (HeightChecker())
         {
             angleLFlg = true;
-            rg.AddForce(new Vector3(-40000, 0, 0));
+            rg.AddForce(new Vector3(-15000, 0, 0));
             rg.constraints = RigidbodyConstraints.FreezeRotationZ;
 
         }

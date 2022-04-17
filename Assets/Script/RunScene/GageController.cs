@@ -8,20 +8,19 @@ public class GageController : MonoBehaviour
 
     public Slider slider;
     static public GageController instance;
+    public bool GamePauseFlg;
 
     void Start()
     {
-        if(instance==null)
+        if (instance == null)
             instance = this;
     }
-    
-
+    /////////////////////////////////////
+    //　体力ゲージ
     public void DownFitness()
     {
-        if(slider.value <= 0)
+        if (slider.value <= 0)
             return;
-        slider.value = slider.value -1;
+        slider.value = slider.value - 1;
     }
-
-
 }

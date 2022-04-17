@@ -83,11 +83,11 @@ public class BikeContller : MonoBehaviour
                 //車体の角度の限界制御 Y軸
                 if (BikeModel.y > bodyAngleLimit)
                 {
-                    this.transform.rotation = new Quaternion(BikeModel.x, bodyAngleLimit, BikeModel.z, BikeModel.w);
+                    this.transform.rotation = new Quaternion(BikeModel.x, bodyAngleLimit, 0, BikeModel.w);
                 }
 
                 if (BikeModel.y < bodyAngleLimit * -1)
-                    this.transform.rotation = new Quaternion(BikeModel.x, bodyAngleLimit * -1, BikeModel.z, BikeModel.w);
+                    this.transform.rotation = new Quaternion(BikeModel.x, bodyAngleLimit * -1, 0, BikeModel.w);
                 //クランクの回転
                 clanck.transform.Rotate(new Vector3(1, 0, 0), 10);
                 //右折
@@ -125,7 +125,7 @@ public class BikeContller : MonoBehaviour
         displayCoin.text = "コイン数：" + coin;
     }
 
-    public void  RmConstraint()
+    public void RmConstraint()
     {
         rg.constraints = RigidbodyConstraints.None;
     }
@@ -135,19 +135,20 @@ public class BikeContller : MonoBehaviour
     //  左右の動き  ///////////////////////////////////////
     public void RightMove()
     {
-        if(HeightChecker())
+        if (HeightChecker())
         {
             angleRFlg = true;
-                rg.AddForce(new Vector3(40000,0,0));
+            rg.AddForce(new Vector3(40000, 0, 0));
             rg.constraints = RigidbodyConstraints.FreezeRotationZ;
+
         }
         else
         {
-            if(GageController.instance.slider.value > 0)
+            if (GageController.instance.slider.value > 0)
             {
                 rg.constraints = RigidbodyConstraints.None;
                 angleRFlg = true;
-                rg.AddForce(new Vector3(40000,0,0));
+                rg.AddForce(new Vector3(40000, 0, 0));
                 GageController.instance.DownFitness();
             }
         }
@@ -155,19 +156,20 @@ public class BikeContller : MonoBehaviour
     public void LeftMove()
     {
 
-        if(HeightChecker())
+        if (HeightChecker())
         {
             angleLFlg = true;
-                rg.AddForce(new Vector3(-40000,0,0));
+            rg.AddForce(new Vector3(-40000, 0, 0));
             rg.constraints = RigidbodyConstraints.FreezeRotationZ;
+
         }
         else
         {
-            if(GageController.instance.slider.value > 0)
+            if (GageController.instance.slider.value > 0)
             {
                 rg.constraints = RigidbodyConstraints.None;
                 angleLFlg = true;
-                rg.AddForce(new Vector3(-40000, 0,0));
+                rg.AddForce(new Vector3(-40000, 0, 0));
                 GageController.instance.DownFitness();
             }
         }
@@ -177,7 +179,6 @@ public class BikeContller : MonoBehaviour
     {
         angleLFlg = false;
         angleRFlg = false;
-        rg.constraints = RigidbodyConstraints.None;
         rg.constraints = RigidbodyConstraints.FreezePositionX;
     }
     //衝突検知　音声///////////////////////////////////////
@@ -245,17 +246,17 @@ public class BikeContller : MonoBehaviour
     //ジャンプ機能/////////////////////////////////////////////
     public void Jump()
     {
-        if(HeightChecker())
+        if (HeightChecker())
         {
-            rg.AddForce(new Vector3(0, upForce,0)); //上に向かって力を加える
+            rg.AddForce(new Vector3(0, upForce, 0)); //上に向かって力を加える
         }
     }
     //////////////////////////////////////////////////////////
     public bool HeightChecker()
     {
-        if(rg.position.y <= -22.5)
+        if (rg.position.y <= -22.5)
             return true;
-        else return false; 
+        else return false;
     }
 
     //ホイールパラメータのクラス

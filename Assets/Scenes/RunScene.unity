@@ -571,7 +571,7 @@ MonoBehaviour:
   maxMotorTorque: 1000
   maxSteeringAngle: 20
   bodyAngleLimit: 0.2
-  speedLimit: 27
+  speedLimit: 20
   upForce: 10000
   displaySpeed: {fileID: 528494989}
   displayCoin: {fileID: 1020952001}

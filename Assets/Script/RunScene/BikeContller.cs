@@ -138,6 +138,7 @@ public class BikeContller : MonoBehaviour
         if(HeightChecker())
         {
             angleRFlg = true;
+                rg.AddForce(new Vector3(40000,0,0));
             rg.constraints = RigidbodyConstraints.FreezeRotationZ;
         }
         else
@@ -146,7 +147,7 @@ public class BikeContller : MonoBehaviour
             {
                 rg.constraints = RigidbodyConstraints.None;
                 angleRFlg = true;
-                rg.AddForce(new Vector3(20000, 0,0));
+                rg.AddForce(new Vector3(40000,0,0));
                 GageController.instance.DownFitness();
             }
         }
@@ -157,6 +158,7 @@ public class BikeContller : MonoBehaviour
         if(HeightChecker())
         {
             angleLFlg = true;
+                rg.AddForce(new Vector3(-40000,0,0));
             rg.constraints = RigidbodyConstraints.FreezeRotationZ;
         }
         else
@@ -165,7 +167,7 @@ public class BikeContller : MonoBehaviour
             {
                 rg.constraints = RigidbodyConstraints.None;
                 angleLFlg = true;
-                rg.AddForce(new Vector3(-20000, 0,0));
+                rg.AddForce(new Vector3(-40000, 0,0));
                 GageController.instance.DownFitness();
             }
         }

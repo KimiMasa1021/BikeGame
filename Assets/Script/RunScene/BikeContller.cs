@@ -35,18 +35,19 @@ public class BikeContller : MonoBehaviour
     int coin;
     public bool slidingFlg;
     Vector3 position;
+    public bool GameOverPanelflg;
 
     void Start()
     {
         GetComponent<Rigidbody>().centerOfMass = new Vector3(0, -0.5f, 0.2f);
         audioS = GetComponent<AudioSource>();
-        gameFlg = true;
+        gameFlg = false;
         ModelAngle = 0;
         angleRFlg = false;
         angleLFlg = false;
         coin = 0;
         slidingFlg = false;
-
+        GameOverPanelflg = false;
         if (instance == null)
             instance = this;
 
@@ -71,7 +72,6 @@ public class BikeContller : MonoBehaviour
         position = this.transform.position;
         if (gameFlg)
         {
-
             if (!slidingFlg)
             {
                 //キーが押されてない場合車体をまっすぐに
@@ -221,6 +221,7 @@ public class BikeContller : MonoBehaviour
         {
             //移動系の制御を停止　上にあるやつ
             gameFlg = false;
+            GameOverPanelflg = true;
             //重力を停止
             rg.isKinematic = true;
             audioS.PlayOneShot(ObstacleAudio);
@@ -272,5 +273,12 @@ public class BikeContller : MonoBehaviour
     public void GameOverToHome()
     {
         SceneManager.LoadScene("StartScene");
+    }
+
+    public void IntroViewEnd()
+    {
+        if (!gameFlg)
+            gameFlg = true;
+        rg.AddForce(new Vector3(0, 2000, 0));
     }
 }

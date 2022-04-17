@@ -7,7 +7,7 @@ public class UiController : MonoBehaviour
     public GameObject[] StopUI;
     void Update()
     {
-        if (BikeContller.instance.gameFlg)
+        if (!BikeContller.instance.GameOverPanelflg)
         {
             for (int i = 0; i < StopUI.Length; i++)
                 StopUI[i].SetActive(false);

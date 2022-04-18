@@ -26,7 +26,7 @@ public class BikeContller : MonoBehaviour
     public ParticleSystem slidingEfect;
     static public BikeContller instance;
     public bool gameFlg;
-    Rigidbody rg;
+    private Rigidbody rg;
     float ModelAngle;
     public bool angleRFlg;
     public bool angleLFlg;
@@ -39,6 +39,7 @@ public class BikeContller : MonoBehaviour
 
     void Start()
     {
+        rg = this.GetComponent<Rigidbody>();
         GetComponent<Rigidbody>().centerOfMass = new Vector3(0, -0.5f, 0.2f);
         audioS = GetComponent<AudioSource>();
         gameFlg = false;
@@ -67,7 +68,7 @@ public class BikeContller : MonoBehaviour
     }
     public void FixedUpdate()
     {
-        rg = this.GetComponent<Rigidbody>();
+
         Quaternion BikeModel = this.transform.rotation;
         position = this.transform.position;
         if (gameFlg)

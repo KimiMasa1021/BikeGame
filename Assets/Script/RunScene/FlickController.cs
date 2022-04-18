@@ -9,7 +9,6 @@ public class FlickController : MonoBehaviour
     private Vector3 touchEndPos;
     public string Direction;
     static public FlickController instance;
-    public Text flic;
 
 
     private void Start()
@@ -75,7 +74,6 @@ public class FlickController : MonoBehaviour
         {
             Direction = "touch";
         }
-        flic.text = Direction;
 
         switch (Direction)
         {

@@ -52,12 +52,12 @@ public class BikeContller : MonoBehaviour
             instance = this;
 
     }
+    //ホイールコライダーの機能
     public void ApplyLocalPositionToVisuals(WheelCollider collider)
     {
         if (collider.transform.childCount == 0)
             return;
         Transform visualWheel = collider.transform.GetChild(0);
-
         Vector3 position;
         Quaternion rotation;
         collider.GetWorldPose(out position, out rotation);
@@ -274,7 +274,7 @@ public class BikeContller : MonoBehaviour
     {
         SceneManager.LoadScene("StartScene");
     }
-
+    //最初のカメラモーションが終わった
     public void IntroViewEnd()
     {
         if (!gameFlg)

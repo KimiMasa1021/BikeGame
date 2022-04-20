@@ -275,7 +275,7 @@ public class BikeContller : MonoBehaviour
     {
         SceneManager.LoadScene("StartScene");
     }
-    //最初のカメラモーションが終わった
+    //最初のカメラモーションが終わったら
     public void IntroViewEnd()
     {
         if (!gameFlg)
